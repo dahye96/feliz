@@ -1,0 +1,57 @@
+body {
+  background: #ccc; }
+
+.ground {
+  min-height: 100vh;
+  padding-top: 64px;
+  display: table;
+  margin: auto;
+  background: #ccc; }
+
+.ground-cell {
+  display: table-cell;
+  width: 800px;
+  vertical-align: middle; }
+  .ground-cell .template {
+    height: 800px;
+    background: #f00;
+    padding: 32px; }
+  .ground-cell input.title {
+    width: 100%;
+    text-align: center;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: "serif"; }
+  .ground-cell input.subtitle {
+    width: 100%;
+    text-align: center;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    font-family: "serif"; }
+
+.menu {
+  position: fixed;
+  left: 0;
+  top: 96px;
+  height: calc(100% - 128px);
+  width: 300px;
+  background: #fff;
+  z-index: 10;
+  border: solid 1px #ccc;
+  display: flex;
+  padding: 12px; }
+  .menu .controller {
+    font-size: 18px;
+    line-height: 28px; }
+    .menu .controller .method {
+      line-height: 28px;
+      font-size: 12px; }
+      .menu .controller .method .i {
+        line-height: 28px;
+        text-align: center;
+        vertical-align: top; }
+
+/*# sourceMappingURL=template.css.map */
