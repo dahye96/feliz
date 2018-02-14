@@ -1,0 +1,90 @@
+.space {
+  height: 100vh;
+  border: 1px solid black; }
+
+* {
+  box-sizing: border-box; }
+
+a {
+  color: #fff;
+  text-decoration: none; }
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', 'Nanum Gothic', sans-serif; }
+
+.nav {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background: #000;
+  display: flex; }
+  .nav .logo {
+    width: 100px;
+    margin-left: 15px;
+    height: 100%;
+    background-image: url("/images/feliz_long.png");
+    background-size: cover; }
+  .nav .buttons {
+    flex: 1;
+    right: 0;
+    line-height: 80px;
+    cursor: pointer;
+    font-size: 15px;
+    color: white;
+    text-align: right;
+    position: relative; }
+    .nav .buttons .menu {
+      position: absolute;
+      right: 0;
+      top: 0;
+      line-height: 80px;
+      text-align: center;
+      font-size: 30px;
+      height: 100%;
+      width: 120px;
+      display: none; }
+      @media screen and (max-width: 800px) {
+        .nav .buttons .menu {
+          display: block; } }
+    .nav .buttons .tab {
+      display: inline-block;
+      width: 120px;
+      vertical-align: top;
+      transition: background-color .1s;
+      flex: 1;
+      text-align: center;
+      line-height: 80px;
+      height: 100%; }
+      @media screen and (max-width: 800px) {
+        .nav .buttons .tab {
+          display: none; } }
+      .nav .buttons .tab:hover {
+        background: #E91E63; }
+      .nav .buttons .tab.no-hover:hover {
+        background: #000; }
+      .nav .buttons .tab .login-button {
+        height: 100%;
+        line-height: 80px;
+        font-size: 32px; }
+        .nav .buttons .tab .login-button:hover {
+          color: #E91E63; }
+    .nav .buttons .btn {
+      flex: 1;
+      cursor: default; }
+      .nav .buttons .btn button {
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        font-size: 13px;
+        width: 40%;
+        height: 50%;
+        background: #E91E63;
+        border: 0;
+        border-radius: 9px; }
+
+/*# sourceMappingURL=main.css.map */

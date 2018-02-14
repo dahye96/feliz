@@ -2,6 +2,32 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    link(rel="stylesheet", href='https://fonts.googleapis.com/css?family=Roboto|Russo+One')
+    link(href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet")
+    link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet")
+    link(href="/swiper/dist/css/swiper.min.css" rel="stylesheet")
+    script(src='/babel-polyfill/dist/polyfill.min.js')
+    script(src='/jquery/dist/jquery.min.js')
+    script(src='/lodash/lodash.min.js')
+    script(src='/vue/dist/vue.min.js')
+    script(src='/kakaologin.js')
+    script(src='https://developers.kakao.com/sdk/js/kakao.min.js')
+    script(src="/swiper/dist/js/swiper.min.js")
   body
+
+    .nav
+      a.logo(href='/')
+
+      .buttons
+        .menu
+          i.fa.fa-bars
+        .service-tab.tab(onclick='slidePage(0)') 서비스 소개
+        .invitation-tab.tab(onclick='slidePage(1)') 사용 예시
+        .review-tab.tab(onclick='slidePage(2)') 사용자 후기
+        a.template.tab(href='/template') 초대장 만들기
+        .register.tab.no-hover
+          i.fa.fa-user-circle.login-button
     block content
+
