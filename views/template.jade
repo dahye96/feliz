@@ -1,3 +1,24 @@
 extends layout
 
 block content
+	link(rel='stylesheet', href='/stylesheets/template.css')
+	.vue#template
+		.ground
+			.ground-cell
+				.template
+					input.title(v-model="title.text" v-bind:style="{'font-size': title.fontSize +'px'}")
+					input.subtitle(v-model="subtitle.text" v-bind:style="{'font-size': subtitle.fontSize +'px'}")
+
+
+		.menu
+			.controller TITLE FONT
+				.control-group
+					.method(@click='fontSize({ target : "title", delta :"1"})') FONE SIZE UP
+						.i.material-icons keyboard_arrow_up
+					.method(@click='fontSize({ target : "subtitle", delta :"1"})') FONE SIZE UP
+						.i.material-icons keyboard_arrow_up
+
+
+
+
+	script(src='/template.js')
