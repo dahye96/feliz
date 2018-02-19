@@ -1,58 +1,93 @@
 body
-  background : #ccc
+  background: #ccc
+
 .ground
   min-height: 100vh
   padding-top: 64px
   display: table
   margin: auto
-  background : #ccc
+  background: #ccc
 
 .ground-cell
   display: table-cell
-  width: 800px
+  width: 360px
   vertical-align: middle
+
   .template
-    height : 800px
-    background : #f00
-    padding : 32px
-  input.title
-    width : 100%
-    text-align: center
-    background : transparent
-    border: none
-    outline: none
-    font-family: "serif"
-  input.subtitle
-    width : 100%
-    text-align: center
-    background : transparent
-    border: none
-    outline: none
-    font-size : 24px
-    font-family: "serif"
+    height: 640px
+    background: #fff
+    padding: 32px
+    overflow: visible
+    overflow-y: auto
+
+    input
+      width:
+      position: absolute
+      background: transparent
+      border: none
+      outline: none
+      font-family: "serif"
+
+    &.wedding1
+      background-image: url('/images/skin/wedding1.png')
+      input.title
+        top: 300px
+      input.subtitle
+        top: 350px
+      input.date
+        top: 400px
+    &.wedding2
+      background-image: url('/images/skin/wedding3.png')
+    &.baby1
+      background-image: url('/images/skin/baby1.png')
+    &.invitation1
+      background-image: url('/images/skin/invitation1.png')
 
 
-.menu
+
+
+.menu-bar
   position: fixed
-  left : 0
-  top : 96px
-  height: calc(100% - 128px)
-  width : 300px
-  background : #fff
+  right: 0
+  top: 120px
+  height: calc(100% - 200px)
+  width: 250px
+  background: #fff
   z-index: 10
-  border : solid 1px #ccc
+  border: solid 1px #ccc
   display: flex
-  padding : 12px
+  padding: 12px
   .controller
     font-size: 18px
     line-height: 28px
     .method
       line-height: 28px
-      font-size : 12px
+      font-size: 12px
       .i
         line-height: 28px
         text-align: center
         vertical-align: top
+
+.functions-group
+  position: fixed
+  left : 0
+  top : 0
+  background : #ff0000
+  height : 100vh
+  width : 200px
+  padding : 120px 0
+.tab-bar
+  height: 50px
+  line-height: 50px
+  padding-left : 32px
+  width: 150px
+  background: #fff
+  margin-bottom: 32px
+  z-index: 10
+  border: solid 1px #ccc
+
+  &.selected
+    width: 200px
 
 
 

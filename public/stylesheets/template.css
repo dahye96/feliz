@@ -10,48 +10,76 @@ body {
 
 .ground-cell {
   display: table-cell;
-  width: 800px;
+  width: 360px;
   vertical-align: middle; }
   .ground-cell .template {
-    height: 800px;
-    background: #f00;
-    padding: 32px; }
-  .ground-cell input.title {
-    width: 100%;
-    text-align: center;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-family: "serif"; }
-  .ground-cell input.subtitle {
-    width: 100%;
-    text-align: center;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 24px;
-    font-family: "serif"; }
+    height: 640px;
+    background: #fff;
+    padding: 32px;
+    overflow: visible;
+    overflow-y: auto; }
+    .ground-cell .template input {
+      position: absolute;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: "serif"; }
+    .ground-cell .template.wedding1 {
+      background-image: url("/images/skin/wedding1.png"); }
+      .ground-cell .template.wedding1 input.title {
+        top: 300px; }
+      .ground-cell .template.wedding1 input.subtitle {
+        top: 350px; }
+      .ground-cell .template.wedding1 input.date {
+        top: 400px; }
+    .ground-cell .template.wedding2 {
+      background-image: url("/images/skin/wedding3.png"); }
+    .ground-cell .template.baby1 {
+      background-image: url("/images/skin/baby1.png"); }
+    .ground-cell .template.invitation1 {
+      background-image: url("/images/skin/invitation1.png"); }
 
-.menu {
+.menu-bar {
   position: fixed;
-  left: 0;
-  top: 96px;
-  height: calc(100% - 128px);
-  width: 300px;
+  right: 0;
+  top: 120px;
+  height: calc(100% - 200px);
+  width: 250px;
   background: #fff;
   z-index: 10;
   border: solid 1px #ccc;
   display: flex;
   padding: 12px; }
-  .menu .controller {
+  .menu-bar .controller {
     font-size: 18px;
     line-height: 28px; }
-    .menu .controller .method {
+    .menu-bar .controller .method {
       line-height: 28px;
       font-size: 12px; }
-      .menu .controller .method .i {
+      .menu-bar .controller .method .i {
         line-height: 28px;
         text-align: center;
         vertical-align: top; }
+
+.functions-group {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #ff0000;
+  height: 100vh;
+  width: 200px;
+  padding: 120px 0; }
+
+.tab-bar {
+  height: 50px;
+  line-height: 50px;
+  padding-left: 32px;
+  width: 150px;
+  background: #fff;
+  margin-bottom: 32px;
+  z-index: 10;
+  border: solid 1px #ccc; }
+  .tab-bar.selected {
+    width: 200px; }
 
 /*# sourceMappingURL=template.css.map */

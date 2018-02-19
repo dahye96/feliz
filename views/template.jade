@@ -1,24 +1,68 @@
 extends layout
 
 block content
-	link(rel='stylesheet', href='/stylesheets/template.css')
-	.vue#template
-		.ground
-			.ground-cell
-				.template
-					input.title(v-model="title.text" v-bind:style="{'font-size': title.fontSize +'px'}")
-					input.subtitle(v-model="subtitle.text" v-bind:style="{'font-size': subtitle.fontSize +'px'}")
+    link(rel='stylesheet', href='/stylesheets/template.css')
+    .vue#template
+        .ground
+            .ground-cell
+                .template(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].background +')'}")
+                    input.title(v-model="skins[currentSkin].title.text" v-bind:style="{'font-size': skins[currentSkin].title.fontSize +'px', 'font-family' : skins[currentSkin].title.fontFamily, 'text-align' : skins[currentSkin].title.textAlign, 'top' : skins[currentSkin].title.top + 'px'}")
+                    input.subtitle(v-model="skins[currentSkin].subtitle.text" v-bind:style="{'font-size': skins[currentSkin].subtitle.fontSize +'px','font-family' : skins[currentSkin].subtitle.fontFamily,  'text-align' : skins[currentSkin].subtitle.textAlign, 'top' : skins[currentSkin].subtitle.top + 'px'}")
+                    input.date(v-model="skins[currentSkin].date.text" v-bind:style="{'font-size': skins[currentSkin].date.fontSize + 'px','font-family' : skins[currentSkin].date.fontFamily,  'text-align' : skins[currentSkin].date.textAlign, 'top' : skins[currentSkin].date.top + 'px'}")
+
+        .menu-bar
+            .controller(v-if="currentDisplay === 'skin-controller'") 스킨 선택
+                .skin(@click='skinChange({name : "wedding1"})') Wedding ver.1
+                .skin(@click='skinChange({name : "wedding2"})') Wedding ver.2
+                .skin(@click='skinChange({name : "baby"})') Baby
+                .skin(@click='skinChange({name : "invitation"})') Invitation
+
+            .controller(v-if="currentDisplay === 'front-controller'") 초대장 정보
+                .control-group TITLE
+                    .method(@click='fontSize({ target : "title", delta : "1"})') FONT SIZE UP
+                        .i.material-icons keyboard_arrow_up
+                    .method(@click='fontSize({ target : "title", delta : "-1"})') FONT SIZE DOWN
+                        .i.material-icons keyboard_arrow_down
+                    .method(@click='textAlign({ target : "title", dir : "left" })')
+                        .i.material-icons format_align_left
+                    .method(@click='textAlign({ target : "title", dir : "center" })')
+                        .i.material-icons format_align_center
+                    .method(@click='textAlign({ target : "title", dir : "right" })')
+                        .i.material-icons format_align_right
+                .control-group SUB TITLE
+                    .method(@click='fontSize({ target : "subtitle", delta : "1"})') FONT SIZE UP
+                        .i.material-icons keyboard_arrow_up
+                    .method(@click='fontSize({ target : "subtitle", delta : "-1"})') FONT SIZE DOWN
+                        .i.material-icons keyboard_arrow_down
+                    .method(@click='textAlign({ target : "subtitle", dir : "left" })')
+                        .i.material-icons format_align_left
+                    .method(@click='textAlign({ target : "subtitle", dir : "center" })')
+                        .i.material-icons format_align_center
+                    .method(@click='textAlign({ target : "subtitle", dir : "right" })')
+                        .i.material-icons format_align_right
+                .control-group DATE
+                    .method(@click='fontSize({ target : "date", delta : "1"})') FONT SIZE UP
+                        .i.material-icons keyboard_arrow_up
+                    .method(@click='fontSize({ target : "date", delta : "-1"})') FONT SIZE DOWN
+                        .i.material-icons keyboard_arrow_down
+                    .method(@click='textAlign({ target : "date", dir : "left" })')
+                        .i.material-icons format_align_left
+                    .method(@click='textAlign({ target : "date", dir : "center" })')
+                        .i.material-icons format_align_center
+                    .method(@click='textAlign({ target : "date", dir : "right" })')
+                        .i.material-icons format_align_right
+
+            .controller(v-if="currentDisplay === 'detail-controller'") 세부사항
+                .control-group
+                    .method(@click='fontSize({ target : "title", delta :"1"})') FONE SIZE UP
+                        .i.material-icons keyboard_arrow_up
+                    .method(@click='fontSize({ target : "subtitle", delta :"1"})') FONE SIZE UP
+                        .i.material-icons keyboard_arrow_up
+
+        .functions-group
+            template(v-for='func in functions')
+                .tab-bar(v-bind:class="{selected : func.selected}",
+                 @click="tabClick(func)") {{func.name}}
 
 
-		.menu
-			.controller TITLE FONT
-				.control-group
-					.method(@click='fontSize({ target : "title", delta :"1"})') FONE SIZE UP
-						.i.material-icons keyboard_arrow_up
-					.method(@click='fontSize({ target : "subtitle", delta :"1"})') FONE SIZE UP
-						.i.material-icons keyboard_arrow_up
-
-
-
-
-	script(src='/template.js')
+    script(src='/template.js')
