@@ -5,59 +5,127 @@ block content
     .vue#template
         .ground
             .ground-cell
-                .template(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].background +')'}")
+                .template.first(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].background +')'}")
                     input.title(v-model="skins[currentSkin].title.text" v-bind:style="{'font-size': skins[currentSkin].title.fontSize +'px', 'font-family' : skins[currentSkin].title.fontFamily, 'text-align' : skins[currentSkin].title.textAlign, 'top' : skins[currentSkin].title.top + 'px'}")
                     input.subtitle(v-model="skins[currentSkin].subtitle.text" v-bind:style="{'font-size': skins[currentSkin].subtitle.fontSize +'px','font-family' : skins[currentSkin].subtitle.fontFamily,  'text-align' : skins[currentSkin].subtitle.textAlign, 'top' : skins[currentSkin].subtitle.top + 'px'}")
                     input.date(v-model="skins[currentSkin].date.text" v-bind:style="{'font-size': skins[currentSkin].date.fontSize + 'px','font-family' : skins[currentSkin].date.fontFamily,  'text-align' : skins[currentSkin].date.textAlign, 'top' : skins[currentSkin].date.top + 'px'}")
 
+                .template.info(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].infoBack +')'}")
+
+                .template.map(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].map +')'}")
+
+                .template.gallery(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].gallery +')'}" v-if="galleryUse === true")
+
+                .template.comments(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].comments +')'}" v-if="commentUse === true")
+
+
         .menu-bar
-            .controller(v-if="currentDisplay === 'skin-controller'") 스킨 선택
-                .skin(@click='skinChange({name : "wedding1"})') Wedding ver.1
-                .skin(@click='skinChange({name : "wedding2"})') Wedding ver.2
+            .controller(v-if="currentDisplay === 'skin-controller'")
+                .head 스킨 선택
+                .skin(@click='skinChange({name : "wedding1"})') Wedding1
+                    img(src='/images/thumbnail/wedding2T.png')
+                .skin(@click='skinChange({name : "wedding2"})') Wedding2
+                    img(src='/images/thumbnail/wedding3T.png')
                 .skin(@click='skinChange({name : "baby"})') Baby
+                    img(src='/images/thumbnail/babyT.png')
                 .skin(@click='skinChange({name : "invitation"})') Invitation
+                    img(src='/images/thumbnail/invitationT.png')
 
-            .controller(v-if="currentDisplay === 'front-controller'") 초대장 정보
-                .control-group TITLE
-                    .method(@click='fontSize({ target : "title", delta : "1"})') FONT SIZE UP
-                        .i.material-icons keyboard_arrow_up
-                    .method(@click='fontSize({ target : "title", delta : "-1"})') FONT SIZE DOWN
-                        .i.material-icons keyboard_arrow_down
-                    .method(@click='textAlign({ target : "title", dir : "left" })')
-                        .i.material-icons format_align_left
-                    .method(@click='textAlign({ target : "title", dir : "center" })')
-                        .i.material-icons format_align_center
-                    .method(@click='textAlign({ target : "title", dir : "right" })')
-                        .i.material-icons format_align_right
-                .control-group SUB TITLE
-                    .method(@click='fontSize({ target : "subtitle", delta : "1"})') FONT SIZE UP
-                        .i.material-icons keyboard_arrow_up
-                    .method(@click='fontSize({ target : "subtitle", delta : "-1"})') FONT SIZE DOWN
-                        .i.material-icons keyboard_arrow_down
-                    .method(@click='textAlign({ target : "subtitle", dir : "left" })')
-                        .i.material-icons format_align_left
-                    .method(@click='textAlign({ target : "subtitle", dir : "center" })')
-                        .i.material-icons format_align_center
-                    .method(@click='textAlign({ target : "subtitle", dir : "right" })')
-                        .i.material-icons format_align_right
-                .control-group DATE
-                    .method(@click='fontSize({ target : "date", delta : "1"})') FONT SIZE UP
-                        .i.material-icons keyboard_arrow_up
-                    .method(@click='fontSize({ target : "date", delta : "-1"})') FONT SIZE DOWN
-                        .i.material-icons keyboard_arrow_down
-                    .method(@click='textAlign({ target : "date", dir : "left" })')
-                        .i.material-icons format_align_left
-                    .method(@click='textAlign({ target : "date", dir : "center" })')
-                        .i.material-icons format_align_center
-                    .method(@click='textAlign({ target : "date", dir : "right" })')
-                        .i.material-icons format_align_right
+            .controller(v-if="currentDisplay === 'front-controller'")
+                .head 초대장 정보
+                .control-group 제목
+                    .i.material-icons arrow_drop_down
+                    .control-cell
+                        .font
+                            .method(@click='fontSize({ target : "title", delta : "1"})') 글씨 크기
+                                .i.material-icons keyboard_arrow_up
+                            .method(@click='fontSize({ target : "title", delta : "-1"})') 글씨 크기
+                                .i.material-icons keyboard_arrow_down
+                        .align
+                            .method(@click='textAlign({ target : "title", dir : "left" })')
+                                .i.material-icons format_align_left
+                            .method(@click='textAlign({ target : "title", dir : "center" })')
+                                .i.material-icons format_align_center
+                            .method(@click='textAlign({ target : "title", dir : "right" })')
+                                .i.material-icons format_align_right
+                .control-group 부제목
+                    .i.material-icons arrow_drop_down
+                    .i.material-icons arrow_drop_up
+                    .font
+                        .method(@click='fontSize({ target : "subtitle", delta : "1"})') 글씨 크기
+                            .i.material-icons keyboard_arrow_up
+                        .method(@click='fontSize({ target : "subtitle", delta : "-1"})') 글씨 크기
+                            .i.material-icons keyboard_arrow_down
+                    .align
+                        .method(@click='textAlign({ target : "subtitle", dir : "left" })')
+                            .i.material-icons format_align_left
+                        .method(@click='textAlign({ target : "subtitle", dir : "center" })')
+                            .i.material-icons format_align_center
+                        .method(@click='textAlign({ target : "subtitle", dir : "right" })')
+                            .i.material-icons format_align_right
+                .control-group 날짜
+                    .i.material-icons arrow_drop_down
+                    .i.material-icons arrow_drop_up
+                    .font
+                        .method(@click='fontSize({ target : "date", delta : "1"})') 글씨 크기
+                            .i.material-icons keyboard_arrow_up
+                        .method(@click='fontSize({ target : "date", delta : "-1"})') 글씨 크기
+                            .i.material-icons keyboard_arrow_down
+                    .align
+                        .method(@click='textAlign({ target : "date", dir : "left" })')
+                            .i.material-icons format_align_left
+                        .method(@click='textAlign({ target : "date", dir : "center" })')
+                            .i.material-icons format_align_center
+                        .method(@click='textAlign({ target : "date", dir : "right" })')
+                            .i.material-icons format_align_right
+                .info ※ 원하는 부분을 선택해 내용을 수정하세요.
 
-            .controller(v-if="currentDisplay === 'detail-controller'") 세부사항
-                .control-group
-                    .method(@click='fontSize({ target : "title", delta :"1"})') FONE SIZE UP
-                        .i.material-icons keyboard_arrow_up
-                    .method(@click='fontSize({ target : "subtitle", delta :"1"})') FONE SIZE UP
-                        .i.material-icons keyboard_arrow_up
+            .controller(v-if="currentDisplay === 'detail-controller'")
+                .head 세부 정보
+                .control-group 예식 정보
+                    .i.material-icons arrow_drop_down
+                    .i.material-icons arrow_drop_up
+                    // 날짜 datepicker
+                    // 시간 timepicker
+                    // 예식장명
+                    // 초대글
+                    // 예식장 전화번호
+                    // 예식장 주소 검색
+                    // 지도
+                    // 예식장 교통 안내
+                .control-group 신랑 정보
+                    .i.material-icons arrow_drop_down
+                    .i.material-icons arrow_drop_up
+                    // 신랑 이름
+                    // 신랑 아빠
+                    // 신랑 엄마
+                    // 혼주와의 관계
+                    // 신랑 번호
+
+                .control-group 신부 정보
+                    .i.material-icons arrow_drop_down
+                    .i.material-icons arrow_drop_up
+                    // 신랑 이름
+                    // 신랑 아빠
+                    // 신랑 엄마
+                    // 혼주와의 관계
+                    // 신랑 번호
+
+            .controller(v-if="currentDisplay === 'gallery-controller'")
+                .head 갤러리
+                .control-group 갤러리 사용 여부
+                    .toggle(v-bind:class="{on : galleryUse}", @click="galleryUseCheck()")
+                        .switch
+                    // on 시 이미지 업로드 버튼
+
+                    // 추가된 이미지들
+
+            .controller(v-if="currentDisplay === 'share-controller'")
+                .head 방명록
+                .control-group 방명록 사용 여부
+                    .toggle(v-bind:class="{on : commentUse}", @click="commentUseCheck()")
+                        .switch
+                .info(v-if="commentUse==true") ※ 왼쪽은 예시입니다.
 
         .functions-group
             template(v-for='func in functions')

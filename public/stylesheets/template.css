@@ -1,85 +1,140 @@
 body {
-  background: #ccc; }
+  background: #ddd; }
 
 .ground {
   min-height: 100vh;
   padding-top: 64px;
   display: table;
   margin: auto;
-  background: #ccc; }
+  background: #ddd; }
 
 .ground-cell {
   display: table-cell;
   width: 360px;
   vertical-align: middle; }
   .ground-cell .template {
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
     height: 640px;
+    padding: 30px;
     background: #fff;
-    padding: 32px;
-    overflow: visible;
     overflow-y: auto; }
     .ground-cell .template input {
       position: absolute;
       background: transparent;
       border: none;
       outline: none;
-      font-family: "serif"; }
-    .ground-cell .template.wedding1 {
-      background-image: url("/images/skin/wedding1.png"); }
-      .ground-cell .template.wedding1 input.title {
-        top: 300px; }
-      .ground-cell .template.wedding1 input.subtitle {
-        top: 350px; }
-      .ground-cell .template.wedding1 input.date {
-        top: 400px; }
-    .ground-cell .template.wedding2 {
-      background-image: url("/images/skin/wedding3.png"); }
-    .ground-cell .template.baby1 {
-      background-image: url("/images/skin/baby1.png"); }
-    .ground-cell .template.invitation1 {
-      background-image: url("/images/skin/invitation1.png"); }
+      width: 300px; }
 
 .menu-bar {
   position: fixed;
   right: 0;
   top: 120px;
-  height: calc(100% - 200px);
-  width: 250px;
-  background: #fff;
+  min-height: 70vh;
+  width: 300px;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
   z-index: 10;
   border: solid 1px #ccc;
   display: flex;
-  padding: 12px; }
+  padding: 15px; }
   .menu-bar .controller {
+    width: 100%;
     font-size: 18px;
-    line-height: 28px; }
-    .menu-bar .controller .method {
-      line-height: 28px;
-      font-size: 12px; }
-      .menu-bar .controller .method .i {
+    line-height: 28px;
+    text-align: center; }
+    .menu-bar .controller .head {
+      width: 100%;
+      margin-bottom: 10px;
+      background-color: #E91E63;
+      color: #fff;
+      font-weight: 700; }
+    .menu-bar .controller .skin {
+      margin: 15px;
+      display: inline-block;
+      cursor: pointer; }
+      .menu-bar .controller .skin img {
+        display: block;
+        width: 100px;
+        height: 100px;
+        border-radius: 5px; }
+    .menu-bar .controller .control-group {
+      width: 100%;
+      text-align: center;
+      margin-top: 35px;
+      color: #E91E63;
+      font-weight: bold;
+      line-height: 15px; }
+      .menu-bar .controller .control-group .font {
+        display: flex; }
+      .menu-bar .controller .control-group .align {
+        display: flex; }
+      .menu-bar .controller .control-group .method {
         line-height: 28px;
-        text-align: center;
-        vertical-align: top; }
+        font-size: 12px;
+        display: inline-block;
+        cursor: default;
+        flex: 1;
+        color: #fff; }
+        .menu-bar .controller .control-group .method .i {
+          line-height: 28px;
+          text-align: center;
+          vertical-align: top;
+          cursor: pointer; }
+      .menu-bar .controller .control-group .toggle {
+        background-color: #bbb;
+        display: inline-block;
+        border: 1px solid #fff;
+        border-radius: 21px;
+        box-shadow: 0 0 5px #ddd;
+        box-sizing: border-box;
+        height: 21px;
+        transition: 400ms cubic-bezier(0, 0, 0, 1);
+        width: 50px;
+        margin-left: 20px; }
+        .menu-bar .controller .control-group .toggle.on {
+          background: #E91E63;
+          padding-left: 29px; }
+        .menu-bar .controller .control-group .toggle .switch {
+          background: #fff;
+          border-radius: 100%;
+          height: 15px;
+          margin: 2px;
+          position: relative;
+          width: 15px;
+          z-index: 9; }
+    .menu-bar .controller .info {
+      font-size: 13px;
+      margin-top: 40px;
+      text-align: center; }
 
 .functions-group {
   position: fixed;
   left: 0;
-  top: 0;
-  background: #ff0000;
+  top: 60px;
   height: 100vh;
   width: 200px;
   padding: 120px 0; }
-
-.tab-bar {
-  height: 50px;
-  line-height: 50px;
-  padding-left: 32px;
-  width: 150px;
-  background: #fff;
-  margin-bottom: 32px;
-  z-index: 10;
-  border: solid 1px #ccc; }
-  .tab-bar.selected {
-    width: 200px; }
+  .functions-group .tab-bar {
+    height: 50px;
+    line-height: 50px;
+    padding-right: 15px;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+    width: 150px;
+    text-align: right;
+    border-radius: 5px;
+    margin-bottom: 32px;
+    z-index: 10;
+    border: solid 1px #ccc;
+    cursor: pointer; }
+    .functions-group .tab-bar.selected {
+      background-color: #E91E63;
+      width: 200px;
+      font-weight: bold;
+      font-size: 25px; }
 
 /*# sourceMappingURL=template.css.map */

@@ -1,9 +1,24 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "FlowerRoad";
+  src: url("/font/SangSangFlowerRoad.eot");
+  src: url("/font/SangSangFlowerRoad.woff") format("woff");
+  src: local(※), url("/font/SangSangFlowerRoad.woff") format("woff"); }
+
+@font-face {
+  font-family: 'Rabendeo';
+  src: url("/font/210RabendeoR.eot");
+  src: url("/font/TTRabendeoR.woff") format("woff");
+  src: local(※), url("/font/TTRabendeoR.woff") format("woff"); }
+
 .space {
   height: 100vh;
   border: 1px solid black; }
 
 * {
   box-sizing: border-box; }
+  *::-webkit-scrollbar {
+    display: none; }
 
 a {
   color: #fff;

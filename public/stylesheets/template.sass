@@ -1,12 +1,12 @@
 body
-  background: #ccc
+  background: #ddd
 
 .ground
   min-height: 100vh
   padding-top: 64px
   display: table
   margin: auto
-  background: #ccc
+  background: #ddd
 
 .ground-cell
   display: table-cell
@@ -14,80 +14,167 @@ body
   vertical-align: middle
 
   .template
+    border: 2px solid #ccc
+    border-radius: 3px
+    width: 100%
     height: 640px
+    padding: 30px
     background: #fff
-    padding: 32px
-    overflow: visible
     overflow-y: auto
 
     input
-      width:
       position: absolute
       background: transparent
       border: none
       outline: none
-      font-family: "serif"
-
-    &.wedding1
-      background-image: url('/images/skin/wedding1.png')
-      input.title
-        top: 300px
-      input.subtitle
-        top: 350px
-      input.date
-        top: 400px
-    &.wedding2
-      background-image: url('/images/skin/wedding3.png')
-    &.baby1
-      background-image: url('/images/skin/baby1.png')
-    &.invitation1
-      background-image: url('/images/skin/invitation1.png')
-
-
-
+      width: 300px
 
 .menu-bar
   position: fixed
   right: 0
   top: 120px
-  height: calc(100% - 200px)
-  width: 250px
-  background: #fff
+  min-height: 70vh
+  width: 300px
+  border-radius: 5px
+  background: #000
+  color: #fff
   z-index: 10
   border: solid 1px #ccc
   display: flex
-  padding: 12px
+  padding: 15px
+
   .controller
+    width: 100%
     font-size: 18px
     line-height: 28px
-    .method
-      line-height: 28px
-      font-size: 12px
-      .i
+    text-align: center
+
+    .head
+      width: 100%
+      margin-bottom: 10px
+      background-color: #E91E63
+      color: #fff
+      font-weight: 700
+
+    .skin
+      margin: 15px
+      display: inline-block
+      cursor: pointer
+
+      img
+        display: block
+        width: 100px
+        height: 100px
+        border-radius: 5px
+
+    .control-group
+      width: 100%
+      text-align: center
+      margin-top: 35px
+      color: #E91E63
+      font-weight: bold
+      line-height: 15px
+
+      .control-cell
+        display: none
+
+      .font
+        display: flex
+      .align
+        display: flex
+
+      .method
         line-height: 28px
-        text-align: center
-        vertical-align: top
+        font-size: 12px
+        display: inline-block
+        cursor: default
+        flex: 1
+        color: #fff
+
+        .i
+          line-height: 28px
+          text-align: center
+          vertical-align: top
+          cursor: pointer
+
+
+      .toggle
+        // this is both the width and height of the little circular switch
+        $switch-height: 15px
+
+        // change the spacing between the switch and the entire toggle
+        $switch-margin: 2px
+
+        // change the width of the whole toggle
+        $toggle-width: 50px
+
+        // don't change these calculations
+        $toggle-height: 3 * $switch-margin + $switch-height
+        $toggle-padding: $toggle-width - $toggle-height
+
+        background-color: #bbb
+        display: inline-block
+        border: 1px solid #fff
+        border-radius: $toggle-height
+        box-shadow: 0 0 5px #ddd
+        box-sizing: border-box
+        height: $toggle-height
+        transition: 400ms cubic-bezier(0, 0, 0, 1)
+        width: $toggle-width
+        margin-left: 20px
+
+        &.on
+          background: #E91E63
+          padding-left: $toggle-padding
+
+        .switch
+          background: #fff
+          border-radius: 100%
+          height: $switch-height
+          margin: 2px
+          position: relative
+          width: $switch-height
+          z-index: 9
+
+
+    .info
+      font-size: 13px
+      margin-top: 40px
+      text-align: center
 
 .functions-group
   position: fixed
-  left : 0
-  top : 0
-  background : #ff0000
-  height : 100vh
-  width : 200px
-  padding : 120px 0
-.tab-bar
-  height: 50px
-  line-height: 50px
-  padding-left : 32px
-  width: 150px
-  background: #fff
-  margin-bottom: 32px
-  z-index: 10
-  border: solid 1px #ccc
+  left: 0
+  top: 60px
+  height: 100vh
+  width: 200px
+  padding: 120px 0
 
-  &.selected
-    width: 200px
+  .tab-bar
+    height: 50px
+    line-height: 50px
+    padding-right: 15px
+    background-color: #000
+    color: #fff
+    font-size: 20px
+    width: 150px
+    text-align: right
+    border-radius: 5px
+    margin-bottom: 32px
+    z-index: 10
+    border: solid 1px #ccc
+    cursor: pointer
+
+    &.selected
+      background-color: #E91E63
+      width: 200px
+      font-weight: bold
+      font-size: 25px
+
+
+
+
+
 
 
 
