@@ -2,6 +2,42 @@
   @media screen and (max-width: 480px)
     @content
 
+input.detail-name
+  display: inline-block
+  vertical-align: top
+  width : 85px !important
+  height : 50px
+  color: white
+  font-family: 'Rabendeo', sans-serif
+  line-height: 50px
+  margin-left : 10px
+  font-size : 24px
+
+
+.groom
+
+  &.head
+    font-size : 40px
+
+    margin-left : 20px
+    line-height: 50px
+    height : 50px
+    display: inline-block
+    vertical-align: top
+    font-family: "FlowerRoad", sans-serif
+    color: #9ec0f2
+
+.bride
+  margin-left : 100px
+  &.head
+    font-size : 35px
+    line-height: 50px
+    height : 50px
+    display: inline-block
+    vertical-align: top
+    font-family: "FlowerRoad", sans-serif
+    color: #dc8282
+
 body
   background: #ddd
 
@@ -29,6 +65,80 @@ body
     padding: 30px
     background: #fff
     overflow-y: auto
+    background-size: cover
+
+    &.information
+      padding: 0
+      width: 100%
+      height: 640px
+      overflow: hidden
+      background-size: cover !important
+      background-position: center !important
+      .info-field
+        overflow: hidden
+        position: relative
+        width: 100%
+        height: 100%
+        background-color: rgba(0, 0, 0, 0.5)
+
+        z-index: 10
+        .d-day
+          overflow: hidden
+          position: absolute
+          bottom: 0
+          opacity: 1
+          width: 100%
+          height: 60px
+          background: #ffbcbc
+          .text
+            line-height: 60px
+            text-align: center
+            color: white
+            font-family: 'Rabendeo', sans-serif
+            b
+              font-weight: inherit
+              font-size: 40px
+              padding-left: 20px
+        .person-info-table
+          height : 200px
+          display: table
+          width : 100%
+          padding : 120px 32px 0
+
+          .person-info-cell
+
+            background : #000
+            .person-info-info
+
+
+        .invitation-content-table
+          height : 400px
+
+          display: table
+          width : 100%
+          .invitation-content-cell
+            display: table-cell
+            width : 100%
+            vertical-align: middle
+            text-align: center
+            font-family: Rabendeo, sans-serif
+            color : #fff
+            font-size : 22px
+            .invitation-content
+
+
+        .info-cell
+          font-family: "FlowerRoad", sans-serif
+
+          .invitation-content
+            line-height: 30px
+            color: white
+            font-family: 'Rabendeo', sans-serif
+          .person-info
+            background: black
+
+
+
 
     &.map
       padding: 80px 0 0 0
@@ -50,11 +160,64 @@ body
           left: 0
           display: table
           width: 100%
-          height: 30%
+          height: 35%
           .map-content
+            font-family: 'Rabendeo', sans-serif
             display: table-cell
             vertical-align: middle
-            padding: 42px 44px
+            padding: 0 30px
+
+            .placeName
+              text-align: center
+
+            $cell-height: 27px
+            .address-group
+              .address-cell
+                height: $cell-height
+                font-size: 18px
+                .i
+                  color: #e4a8a8
+                  line-height: $cell-height
+                  display: inline-block
+                  vertical-align: top
+                .label
+                  color: #e4a8a8
+                  line-height: $cell-height
+                  display: inline-block
+                  vertical-align: top
+                .content
+                  padding-left: 8px
+                  font-size: 15px
+                  line-height: $cell-height
+                  display: inline-block
+                  vertical-align: top
+            .transport-group
+              .transport-cell
+                height: $cell-height
+                font-size: 18px
+                .i
+                  color: #e4a8a8
+                  line-height: $cell-height
+                  display: inline-block
+                  vertical-align: top
+                .label
+                  color: #e4a8a8
+                  line-height: $cell-height
+                  display: inline-block
+                  vertical-align: top
+              .transport-cell
+                textarea.content
+                  width: 100%
+                  resize: none
+                  border: none
+                  outline: none
+                  background: transparent
+                  font-family: 'Rabendeo', sans-serif
+                  padding-left: 8px
+                  font-size: 15px
+                  line-height: $cell-height
+                  display: inline-block
+                  vertical-align: top
 
     .input-item, input
       position: absolute
@@ -83,7 +246,6 @@ body
   width: 100%
   height: calc(100% - 100px)
   position: relative
-  //background: #f00 !important
   .button
     position: absolute
     bottom: 0
@@ -116,7 +278,7 @@ body
         line-height: 30px
       .image
         height: 100px
-        background: #f00
+        background: #fff
         background-size: cover
         border-radius: 5px
       .delete
@@ -155,6 +317,7 @@ body
     text-align: center
     height: 100%
     display: block
+    position: relative
     .head
       width: 100%
       margin-bottom: 10px
@@ -172,6 +335,48 @@ body
         width: 100px
         height: 100px
         border-radius: 5px
+
+    .button
+      position: absolute
+      bottom: 0
+      right: calc(50% - 20px)
+      width: 40px
+      height: 40px
+      border-radius: 5px
+      background: #E91E63
+      cursor: pointer
+      &:hover
+        background: #c91a56
+      .i
+        line-height: 40px
+        text-align: center
+    .image-group
+      width: 100%
+      .image-item
+        margin-top: 24px
+        position: relative
+        width: 50%
+        display: inline-block
+        vertical-align: top
+        padding: 0 12px
+        .name
+          overflow: hidden
+          width: calc(100% - 30px)
+          font-size: 12px
+          text-align: left
+          height: 30px
+          line-height: 30px
+        .delete
+          cursor: pointer
+          width: 30px
+          height: 30px
+          position: absolute
+          line-height: 30px
+          top: 0
+          right: 0
+          text-align: center
+          &:hover
+            color: #ccc
 
     .control-group
       display: block
@@ -245,7 +450,6 @@ body
           display: inline-block
           vertical-align: top
           line-height: 21px
-        .toggle
       &.open
         .group-title
           .i
@@ -307,7 +511,7 @@ body
         line-height: 24px
         color: #fff
         border: solid 1px #E91E63
-        background: #222
+        background: #333
         cursor: pointer
         border-radius: 5px
         font-size: 12px
