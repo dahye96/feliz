@@ -1,6 +1,9 @@
 body {
   background: #ddd; }
 
+* {
+  box-sizing: border-box; }
+
 .ground {
   min-height: 100vh;
   padding-top: 64px;
@@ -11,7 +14,8 @@ body {
 .ground-cell {
   display: table-cell;
   width: 360px;
-  vertical-align: middle; }
+  vertical-align: middle;
+  padding: 64px 0; }
   .ground-cell .template {
     border: 2px solid #ccc;
     border-radius: 3px;
@@ -20,31 +24,128 @@ body {
     padding: 30px;
     background: #fff;
     overflow-y: auto; }
-    .ground-cell .template input {
+    .ground-cell .template.map {
+      padding: 80px 0 0 0;
+      position: relative; }
+      .ground-cell .template.map .map-field {
+        width: 100%;
+        height: 100%;
+        padding: 14px; }
+        .ground-cell .template.map .map-field .map-drawer {
+          padding: 16px;
+          height: 320px;
+          background: #FABCBC; }
+          .ground-cell .template.map .map-field .map-drawer .map-naver {
+            height: 100%;
+            width: 100%; }
+        .ground-cell .template.map .map-field .map-content-field {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: table;
+          width: 100%;
+          height: 30%; }
+          .ground-cell .template.map .map-field .map-content-field .map-content {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 42px 44px; }
+    .ground-cell .template .input-item, .ground-cell .template input {
       position: absolute;
       background: transparent;
       border: none;
       outline: none;
       width: 300px; }
 
+.template.gallery {
+  position: relative; }
+  .template.gallery .gallery-images {
+    position: absolute;
+    top: 200px;
+    width: 300px !important;
+    height: 396px !important; }
+    .template.gallery .gallery-images .swiper-wrapper {
+      width: 100%;
+      height: 100%; }
+      .template.gallery .gallery-images .swiper-wrapper .swiper-slide {
+        width: 100%;
+        height: 100%;
+        background-size: contain !important;
+        background: transparent no-repeat center; }
+
+.control-cell.gallery {
+  width: 100%;
+  height: calc(100% - 100px);
+  position: relative; }
+  .control-cell.gallery .button {
+    position: absolute;
+    bottom: 0;
+    right: calc(50% - 20px);
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background: #E91E63;
+    cursor: pointer; }
+    .control-cell.gallery .button:hover {
+      background: #c91a56; }
+    .control-cell.gallery .button .i {
+      line-height: 40px;
+      text-align: center; }
+  .control-cell.gallery .image-group {
+    width: 100%; }
+    .control-cell.gallery .image-group .image-item {
+      margin-top: 24px;
+      position: relative;
+      width: 50%;
+      display: inline-block;
+      vertical-align: top;
+      padding: 0 12px; }
+      .control-cell.gallery .image-group .image-item .name {
+        overflow: hidden;
+        width: calc(100% - 30px);
+        font-size: 12px;
+        text-align: left;
+        height: 30px;
+        line-height: 30px; }
+      .control-cell.gallery .image-group .image-item .image {
+        height: 100px;
+        background: #f00;
+        background-size: cover;
+        border-radius: 5px; }
+      .control-cell.gallery .image-group .image-item .delete {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        line-height: 30px;
+        top: 0;
+        right: 0;
+        text-align: center; }
+        .control-cell.gallery .image-group .image-item .delete:hover {
+          color: #ccc; }
+
 .menu-bar {
   position: fixed;
   right: 0;
   top: 120px;
   min-height: 70vh;
+  height: 70vh;
   width: 300px;
   border-radius: 5px;
   background: #000;
   color: #fff;
   z-index: 10;
   border: solid 1px #ccc;
-  display: flex;
   padding: 15px; }
+  @media screen and (max-width: 480px) {
+    .menu-bar {
+      display: none; } }
   .menu-bar .controller {
     width: 100%;
     font-size: 18px;
     line-height: 28px;
-    text-align: center; }
+    text-align: center;
+    height: 100%;
+    display: block; }
     .menu-bar .controller .head {
       width: 100%;
       margin-bottom: 10px;
@@ -61,31 +162,79 @@ body {
         height: 100px;
         border-radius: 5px; }
     .menu-bar .controller .control-group {
+      display: block;
       width: 100%;
       text-align: center;
       margin-top: 35px;
       color: #E91E63;
       font-weight: bold;
       line-height: 15px; }
-      .menu-bar .controller .control-group .font {
-        display: flex; }
-      .menu-bar .controller .control-group .align {
-        display: flex; }
-      .menu-bar .controller .control-group .method {
-        line-height: 28px;
-        font-size: 12px;
-        display: inline-block;
-        cursor: default;
-        flex: 1;
-        color: #fff; }
-        .menu-bar .controller .control-group .method .i {
+      .menu-bar .controller .control-group .control-cell {
+        display: block;
+        padding-top: 8px;
+        padding-bottom: 16px; }
+        .menu-bar .controller .control-group .control-cell .day-inputs {
+          padding: 0 40px; }
+          .menu-bar .controller .control-group .control-cell .day-inputs input[type='date'], .menu-bar .controller .control-group .control-cell .day-inputs input[type='time'] {
+            margin-top: 20px;
+            width: 100%;
+            line-height: 24px;
+            color: #fff;
+            border: solid 1px #E91E63;
+            background: #222;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 12px;
+            font-family: 'Nanum Gothic', sans-serif;
+            padding: 4px 12px;
+            text-align: left;
+            outline: none; }
+        .menu-bar .controller .control-group .control-cell .font {
+          display: flex; }
+        .menu-bar .controller .control-group .control-cell .align {
+          display: flex; }
+        .menu-bar .controller .control-group .control-cell .method {
           line-height: 28px;
+          font-size: 12px;
+          display: inline-block;
+          cursor: default;
+          flex: 1;
+          color: #fff; }
+          .menu-bar .controller .control-group .control-cell .method .i {
+            line-height: 28px;
+            text-align: center;
+            vertical-align: top;
+            cursor: pointer; }
+      .menu-bar .controller .control-group .group-title {
+        height: 40px;
+        text-align: left;
+        cursor: pointer;
+        padding-left: 32px;
+        background: #000; }
+        .menu-bar .controller .control-group .group-title:hover {
+          background: #222; }
+        .menu-bar .controller .control-group .group-title .text {
+          line-height: 40px;
+          display: inline-block;
+          vertical-align: top; }
+        .menu-bar .controller .control-group .group-title .i {
+          line-height: 40px;
           text-align: center;
           vertical-align: top;
-          cursor: pointer; }
+          transform: rotate(0deg);
+          transition: transform .3s; }
+      .menu-bar .controller .control-group .toggle-group {
+        height: 21px; }
+        .menu-bar .controller .control-group .toggle-group .text {
+          display: inline-block;
+          vertical-align: top;
+          line-height: 21px; }
+      .menu-bar .controller .control-group.open .group-title .i {
+        transform: rotate(180deg); }
       .menu-bar .controller .control-group .toggle {
         background-color: #bbb;
         display: inline-block;
+        vertical-align: top;
         border: 1px solid #fff;
         border-radius: 21px;
         box-shadow: 0 0 5px #ddd;
@@ -109,6 +258,48 @@ body {
       font-size: 13px;
       margin-top: 40px;
       text-align: center; }
+    .menu-bar .controller .item {
+      padding: 0 12px;
+      text-align: left;
+      margin-top: 20px; }
+      .menu-bar .controller .item .text {
+        font-size: 14px; }
+      .menu-bar .controller .item input, .menu-bar .controller .item textarea {
+        resize: none;
+        margin-top: 8px;
+        width: 100%;
+        line-height: 24px;
+        color: #fff;
+        border: solid 1px #E91E63;
+        background: #222;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 12px;
+        font-family: 'Nanum Gothic', sans-serif;
+        padding: 4px 12px;
+        text-align: left;
+        outline: none; }
+        .menu-bar .controller .item input.small, .menu-bar .controller .item textarea.small {
+          width: calc(100% - 36px);
+          display: inline-block;
+          vertical-align: top; }
+      .menu-bar .controller .item .i.material-icons {
+        display: inline-block;
+        vertical-align: top;
+        background: #E91E63;
+        width: 32px;
+        height: 32px;
+        margin-top: 9px;
+        margin-left: 4px;
+        text-align: center;
+        line-height: 32px;
+        border-radius: 5px;
+        cursor: pointer; }
+        .menu-bar .controller .item .i.material-icons:hover {
+          background: #c91a56; }
+      .menu-bar .controller .item textarea {
+        line-height: 1.3;
+        height: 80px; }
 
 .functions-group {
   position: fixed;
@@ -117,6 +308,9 @@ body {
   height: 100vh;
   width: 200px;
   padding: 120px 0; }
+  @media screen and (max-width: 480px) {
+    .functions-group {
+      display: none; } }
   .functions-group .tab-bar {
     height: 50px;
     line-height: 50px;

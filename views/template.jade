@@ -1,136 +1,178 @@
 extends layout
 
 block content
-    link(rel='stylesheet', href='/stylesheets/template.css')
-    .vue#template
-        .ground
-            .ground-cell
-                .template.first(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].background +')'}")
-                    input.title(v-model="skins[currentSkin].title.text" v-bind:style="{'font-size': skins[currentSkin].title.fontSize +'px', 'font-family' : skins[currentSkin].title.fontFamily, 'text-align' : skins[currentSkin].title.textAlign, 'top' : skins[currentSkin].title.top + 'px'}")
-                    input.subtitle(v-model="skins[currentSkin].subtitle.text" v-bind:style="{'font-size': skins[currentSkin].subtitle.fontSize +'px','font-family' : skins[currentSkin].subtitle.fontFamily,  'text-align' : skins[currentSkin].subtitle.textAlign, 'top' : skins[currentSkin].subtitle.top + 'px'}")
-                    input.date(v-model="skins[currentSkin].date.text" v-bind:style="{'font-size': skins[currentSkin].date.fontSize + 'px','font-family' : skins[currentSkin].date.fontFamily,  'text-align' : skins[currentSkin].date.textAlign, 'top' : skins[currentSkin].date.top + 'px'}")
+	link(rel='stylesheet', href='/stylesheets/template.css')
+	style.
+		.swiper-container {
+			width: 100%;
+			height: 100%;
+		}
 
-                .template.info(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].infoBack +')'}")
+		.swiper-slide {
+			text-align: center;
+			font-size: 18px;
+			background: #fff;
+			/* Center slide text vertically */
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+		}
 
-                .template.map(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].map +')'}")
+	.vue#template
+		.ground
+			.ground-cell
+				.template.first(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].background +')'}")
+					input.title(v-model="skins[currentSkin].title.text" v-bind:style="{'font-size': skins[currentSkin].title.fontSize +'px', 'font-family' : skins[currentSkin].title.fontFamily, 'text-align' : skins[currentSkin].title.textAlign, 'top' : skins[currentSkin].title.top + 'px'}")
+					input.subtitle(v-model="skins[currentSkin].subtitle.text" v-bind:style="{'font-size': skins[currentSkin].subtitle.fontSize +'px','font-family' : skins[currentSkin].subtitle.fontFamily,  'text-align' : skins[currentSkin].subtitle.textAlign, 'top' : skins[currentSkin].subtitle.top + 'px'}")
+					.input-item.date(v-bind:style="{'font-size': skins[currentSkin].date.fontSize + 'px','font-family' : skins[currentSkin].date.fontFamily,  'text-align' : skins[currentSkin].date.textAlign, 'top' : skins[currentSkin].date.top + 'px'}") {{getCurrentDate()}}
 
-                .template.gallery(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].gallery +')'}" v-if="galleryUse === true")
+				.template.information(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].infoBack +')'}")
 
-                .template.comments(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].comments +')'}" v-if="commentUse === true")
+				.template.map(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].map +')'}")
+					.map-field
+						.map-drawer
+							.map-naver#map
+						.map-content-field
+							.map-content WTFWTFWTF
 
+				.template.gallery(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].gallery +')'}" v-if="galleryUse === true")
+					.gallery-images.swiper-container
+						.swiper-wrapper
 
-        .menu-bar
-            .controller(v-if="currentDisplay === 'skin-controller'")
-                .head 스킨 선택
-                .skin(@click='skinChange({name : "wedding1"})') Wedding1
-                    img(src='/images/thumbnail/wedding2T.png')
-                .skin(@click='skinChange({name : "wedding2"})') Wedding2
-                    img(src='/images/thumbnail/wedding3T.png')
-                .skin(@click='skinChange({name : "baby"})') Baby
-                    img(src='/images/thumbnail/babyT.png')
-                .skin(@click='skinChange({name : "invitation"})') Invitation
-                    img(src='/images/thumbnail/invitationT.png')
-
-            .controller(v-if="currentDisplay === 'front-controller'")
-                .head 초대장 정보
-                .control-group 제목
-                    .i.material-icons arrow_drop_down
-                    .control-cell
-                        .font
-                            .method(@click='fontSize({ target : "title", delta : "1"})') 글씨 크기
-                                .i.material-icons keyboard_arrow_up
-                            .method(@click='fontSize({ target : "title", delta : "-1"})') 글씨 크기
-                                .i.material-icons keyboard_arrow_down
-                        .align
-                            .method(@click='textAlign({ target : "title", dir : "left" })')
-                                .i.material-icons format_align_left
-                            .method(@click='textAlign({ target : "title", dir : "center" })')
-                                .i.material-icons format_align_center
-                            .method(@click='textAlign({ target : "title", dir : "right" })')
-                                .i.material-icons format_align_right
-                .control-group 부제목
-                    .i.material-icons arrow_drop_down
-                    .i.material-icons arrow_drop_up
-                    .font
-                        .method(@click='fontSize({ target : "subtitle", delta : "1"})') 글씨 크기
-                            .i.material-icons keyboard_arrow_up
-                        .method(@click='fontSize({ target : "subtitle", delta : "-1"})') 글씨 크기
-                            .i.material-icons keyboard_arrow_down
-                    .align
-                        .method(@click='textAlign({ target : "subtitle", dir : "left" })')
-                            .i.material-icons format_align_left
-                        .method(@click='textAlign({ target : "subtitle", dir : "center" })')
-                            .i.material-icons format_align_center
-                        .method(@click='textAlign({ target : "subtitle", dir : "right" })')
-                            .i.material-icons format_align_right
-                .control-group 날짜
-                    .i.material-icons arrow_drop_down
-                    .i.material-icons arrow_drop_up
-                    .font
-                        .method(@click='fontSize({ target : "date", delta : "1"})') 글씨 크기
-                            .i.material-icons keyboard_arrow_up
-                        .method(@click='fontSize({ target : "date", delta : "-1"})') 글씨 크기
-                            .i.material-icons keyboard_arrow_down
-                    .align
-                        .method(@click='textAlign({ target : "date", dir : "left" })')
-                            .i.material-icons format_align_left
-                        .method(@click='textAlign({ target : "date", dir : "center" })')
-                            .i.material-icons format_align_center
-                        .method(@click='textAlign({ target : "date", dir : "right" })')
-                            .i.material-icons format_align_right
-                .info ※ 원하는 부분을 선택해 내용을 수정하세요.
-
-            .controller(v-if="currentDisplay === 'detail-controller'")
-                .head 세부 정보
-                .control-group 예식 정보
-                    .i.material-icons arrow_drop_down
-                    .i.material-icons arrow_drop_up
-                    // 날짜 datepicker
-                    // 시간 timepicker
-                    // 예식장명
-                    // 초대글
-                    // 예식장 전화번호
-                    // 예식장 주소 검색
-                    // 지도
-                    // 예식장 교통 안내
-                .control-group 신랑 정보
-                    .i.material-icons arrow_drop_down
-                    .i.material-icons arrow_drop_up
-                    // 신랑 이름
-                    // 신랑 아빠
-                    // 신랑 엄마
-                    // 혼주와의 관계
-                    // 신랑 번호
-
-                .control-group 신부 정보
-                    .i.material-icons arrow_drop_down
-                    .i.material-icons arrow_drop_up
-                    // 신랑 이름
-                    // 신랑 아빠
-                    // 신랑 엄마
-                    // 혼주와의 관계
-                    // 신랑 번호
-
-            .controller(v-if="currentDisplay === 'gallery-controller'")
-                .head 갤러리
-                .control-group 갤러리 사용 여부
-                    .toggle(v-bind:class="{on : galleryUse}", @click="galleryUseCheck()")
-                        .switch
-                    // on 시 이미지 업로드 버튼
-
-                    // 추가된 이미지들
-
-            .controller(v-if="currentDisplay === 'share-controller'")
-                .head 방명록
-                .control-group 방명록 사용 여부
-                    .toggle(v-bind:class="{on : commentUse}", @click="commentUseCheck()")
-                        .switch
-                .info(v-if="commentUse==true") ※ 왼쪽은 예시입니다.
-
-        .functions-group
-            template(v-for='func in functions')
-                .tab-bar(v-bind:class="{selected : func.selected}",
-                 @click="tabClick(func)") {{func.name}}
+						.swiper-pagination
+				.template.comments(v-bind:style="{'background-image' : 'url(' + skins[currentSkin].comments +')'}" v-if="commentUse === true")
 
 
-    script(src='/template.js')
+		.menu-bar
+			.controller(v-if="currentDisplay === 'skin-controller'")
+				.head 스킨 선택
+				.skin(@click='skinChange({name : "wedding1"})') Wedding1
+					img(src='/images/thumbnail/wedding2T.png')
+				.skin(@click='skinChange({name : "wedding2"})') Wedding2
+					img(src='/images/thumbnail/wedding3T.png')
+				.skin(@click='skinChange({name : "baby"})') Baby
+					img(src='/images/thumbnail/babyT.png')
+				.skin(@click='skinChange({name : "invitation"})') Invitation
+					img(src='/images/thumbnail/invitationT.png')
+
+			.controller(v-if="currentDisplay === 'front-controller'")
+				.head 초대장 정보
+				.control-group( v-bind:class='{open:controller.frontController.title}')
+					.group-title(@click='switchController("frontController","title")')
+						.text 제목
+						.i.material-icons arrow_drop_down
+					.control-cell(v-if="controller.frontController.title")
+						.font
+							.method(@click='fontSize({ target : "title", delta : "1"})') 글씨 크기
+								.i.material-icons keyboard_arrow_up
+							.method(@click='fontSize({ target : "title", delta : "-1"})') 글씨 크기
+								.i.material-icons keyboard_arrow_down
+						.align
+							.method(@click='textAlign({ target : "title", dir : "left" })')
+								.i.material-icons format_align_left
+							.method(@click='textAlign({ target : "title", dir : "center" })')
+								.i.material-icons format_align_center
+							.method(@click='textAlign({ target : "title", dir : "right" })')
+								.i.material-icons format_align_right
+
+				.control-group( v-bind:class='{open:controller.frontController.subtitle}')
+					.group-title(@click='switchController("frontController","subtitle")')
+						.text 부제목
+						.i.material-icons arrow_drop_down
+
+					.control-cell(v-if="controller.frontController.subtitle")
+						.font
+							.method(@click='fontSize({ target : "subtitle", delta : "1"})') 글씨 크기
+								.i.material-icons keyboard_arrow_up
+							.method(@click='fontSize({ target : "subtitle", delta : "-1"})') 글씨 크기
+								.i.material-icons keyboard_arrow_down
+						.align
+							.method(@click='textAlign({ target : "subtitle", dir : "left" })')
+								.i.material-icons format_align_left
+							.method(@click='textAlign({ target : "subtitle", dir : "center" })')
+								.i.material-icons format_align_center
+							.method(@click='textAlign({ target : "subtitle", dir : "right" })')
+								.i.material-icons format_align_right
+
+				.control-group( v-bind:class='{open:controller.frontController.date}')
+					.group-title(@click='switchController("frontController","date")')
+						.text 날짜
+						.i.material-icons arrow_drop_down
+					.control-cell(v-if="controller.frontController.date")
+						.font
+							.method(@click='fontSize({ target : "date", delta : "1"})') 글씨 크기
+								.i.material-icons keyboard_arrow_up
+							.method(@click='fontSize({ target : "date", delta : "-1"})') 글씨 크기
+								.i.material-icons keyboard_arrow_down
+						.align
+							.method(@click='textAlign({ target : "date", dir : "left" })')
+								.i.material-icons format_align_left
+							.method(@click='textAlign({ target : "date", dir : "center" })')
+								.i.material-icons format_align_center
+							.method(@click='textAlign({ target : "date", dir : "right" })')
+								.i.material-icons format_align_right
+						.day-inputs
+							input(type='date', @change="dateChange()", v-model='model.date')
+							input(type='time', @change="dateChange()", v-model='model.time')
+							//input(type='text' v-model='date.year')
+							//input(type='text' v-model='date.month'))
+							//input(type='text' v-model='date.day'))
+				.info ※ 원하는 부분을 선택해 내용을 수정하세요.
+
+			.controller(v-if="currentDisplay === 'detail-controller'")
+				.head 세부 정보
+				.item
+					.text 초대글
+					textarea(type='text')
+				.item
+					.text 장소명
+					input(type='text' v-model='model.locationName')
+				.item
+					.text 주소
+					input.small(type='text' v-model='model.locationAddress')
+					.i.material-icons(@click="searchLocation") search
+			.controller(v-if="currentDisplay === 'gallery-controller'")
+				.head 갤러리
+				.control-group
+					.toggle-group
+						.text 갤러리 사용 여부
+						.toggle(v-bind:class="{on : galleryUse}", @click="galleryUseCheck()")
+							.switch
+				.control-cell.gallery(v-if="galleryUse")
+					.button(@click='fileUpload')
+						.i.material-icons file_upload
+					input(type='file' style='display:none')#imageUploader
+					.image-group
+						template(v-for='(image, idx) in gallery.files')
+							.image-item
+								.name {{image.name}}
+								.image(v-bind:style="{'background-image' : 'url(' + image.data +')'}")
+								.delete.i.material-icons(@click='removeImage(idx)') close
+
+					// on 시 이미지 업로드 버튼
+					// 추가된 이미지들
+			.controller(v-if="currentDisplay === 'share-controller'")
+				.head 방명록
+				.control-group
+					.toggle-group
+						.text 방명록 사용 여부
+						.toggle(v-bind:class="{on : commentUse}", @click="commentUseCheck()")
+							.switch
+				.info(v-if="commentUse==true") ※ 왼쪽은 예시입니다.
+
+		.functions-group
+			template(v-for='func in functions')
+				.tab-bar(v-bind:class="{selected : func.selected}",
+				@click="tabClick(func)") {{func.name}}
+
+
+	script(src='/template.js')
